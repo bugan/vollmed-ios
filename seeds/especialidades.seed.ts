@@ -1,9 +1,8 @@
-import { AppDataSource } from "../data-source.js";
-import { Especialidade } from "../especialistas/especialidades/especialidade.entity.js";
+import { AppDataSource } from "../src/data-source.js";
+import { Especialidade } from "../src/especialistas/especialidades/especialidade.entity.js";
 
 export const seedEspecialidades = async () => {
   try {
-    // Exemplo de criação de planos de saúde iniciais
     const especialidades = [
       {
         nome: "Cardiologia",

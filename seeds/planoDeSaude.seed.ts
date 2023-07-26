@@ -1,5 +1,5 @@
-import { AppDataSource } from "../data-source.js";
-import { PlanoDeSaude } from "../planosDeSaude/planosDeSaude.entity.js";
+import { AppDataSource } from "../src/data-source.js";
+import { PlanoDeSaude } from "../src/planosDeSaude/planosDeSaude.entity.js";
 
 export const seedPlanoDeSaude = async () => {
   try {

@@ -10,7 +10,7 @@
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --coverage",
     "start": "tsc-watch --onSuccess \"node ./build/server.js\"",
     "compile": "npx tsc",
-    "seed": "ts-node --esm ./src/seeds/seeds.ts"
+    "seed": "ts-node --esm ./seeds/seeds.ts"
   },
   "repository": {
     "type": "git",

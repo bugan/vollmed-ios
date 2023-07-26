@@ -1,4 +1,5 @@
-import { AppDataSource } from "../data-source.js";
+import { AppDataSource } from "../src/data-source.js";
+import { seedClinicas } from "./clinicas.seed.js";
 import { seedEspecialidades } from "./especialidades.seed.js";
 import { seedEspecialistas } from "./especialistas.seed.js";
 import { seedPacientes } from "./pacientes.seed.js";
@@ -11,6 +12,7 @@ AppDataSource.initialize()
     await seedEspecialidades();
     await seedEspecialistas();
     await seedPacientes();
+    await seedClinicas();
     process.exit(0);
   })
   .catch((error) => {

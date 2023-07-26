@@ -1,6 +1,6 @@
-import { AppDataSource } from "../data-source.js";
-import { Endereco } from "../enderecos/enderecoEntity.js";
-import { Especialista } from "../especialistas/EspecialistaEntity.js";
+import { AppDataSource } from "../src/data-source.js";
+import { Endereco } from "../src/enderecos/enderecoEntity.js";
+import { Especialista } from "../src/especialistas/EspecialistaEntity.js";
 
 export const seedEspecialistas = async () => {
   try {
