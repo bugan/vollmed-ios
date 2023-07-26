@@ -7,8 +7,8 @@ import {
   Relation,
   OneToMany,
 } from "typeorm";
-import { Endereco } from "../enderecos/enderecoEntity.js";
-import { Avaliacoes } from "../avaliacoes/avaliacoesEntity.js";
+import { Endereco } from "../enderecos/endereco.entity.js";
+import { Avaliacoes } from "../avaliacoes/avaliacoes.entity.js";
 import { type IAutenticavel } from "../auth/IAutencavel.js";
 import { Role } from "../auth/roles.js";
 

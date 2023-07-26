@@ -1,7 +1,7 @@
-import { Role } from './roles.js'
-import { type DataSource, ViewColumn, ViewEntity } from 'typeorm'
-import { type IAutenticavel } from './IAutencavel'
-import { Paciente } from '../pacientes/pacienteEntity.js'
+import { Role } from "./roles.js";
+import { type DataSource, ViewColumn, ViewEntity } from "typeorm";
+import { type IAutenticavel } from "./IAutencavel.js";
+import { Paciente } from "../pacientes/paciente.entity.js";
 
 @ViewEntity({
   expression: `
@@ -10,22 +10,21 @@ import { Paciente } from '../pacientes/pacienteEntity.js'
     SELECT "email", "senha", "role", "id", '/especialista' AS "rota" FROM "especialista"
     UNION ALL
     SELECT "email", "senha", "role", "id", '/clinica' AS "rota" FROM "clinica"
-  `
+  `,
 })
-
 export class Autenticaveis implements IAutenticavel {
   @ViewColumn()
-    id: string
+  id: string;
 
   @ViewColumn()
-    email: string
+  email: string;
 
   @ViewColumn()
-    senha: string
+  senha: string;
 
   @ViewColumn()
-    rota: string
+  rota: string;
 
   @ViewColumn()
-    role: Role
+  role: Role;
 }

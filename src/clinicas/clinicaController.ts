@@ -1,9 +1,9 @@
 import { type Request, type Response } from "express";
 import { AppDataSource } from "../data-source.js";
-import { Endereco } from "../enderecos/enderecoEntity.js";
-import { Especialista } from "../especialistas/EspecialistaEntity.js";
+import { Endereco } from "../enderecos/endereco.entity.js";
+import { Especialista } from "../especialistas/Especialista.entity.js";
 import { mapeiaPlano } from "../utils/planoSaudeUtils.js";
-import { Clinica } from "./clinicaEntity.js";
+import { Clinica } from "./clinica.entity.js";
 import { encryptPassword } from "../utils/senhaUtils.js";
 
 export const criarClinica = async (

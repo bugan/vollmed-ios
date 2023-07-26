@@ -1,7 +1,7 @@
 import { AppDataSource } from "../src/data-source.js";
-import { Clinica } from "../src/clinicas/clinicaEntity.js";
+import { Clinica } from "../src/clinicas/clinica.entity.js";
 import { Role } from "../src/auth/roles.js";
-import { Endereco } from "../src/enderecos/enderecoEntity.js";
+import { Endereco } from "../src/enderecos/endereco.entity.js";
 
 export const seedClinicas = async () => {
   try {
