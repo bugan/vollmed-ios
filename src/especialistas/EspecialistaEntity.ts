@@ -55,7 +55,7 @@ export class Especialista implements IAutenticavel {
   possuiPlanoSaude: boolean;
 
   @Column({ type: "simple-array", nullable: true })
-  planosSaude: string;
+  planosSaude: string[];
 
   @OneToOne(() => Endereco, {
     cascade: ["update"],
