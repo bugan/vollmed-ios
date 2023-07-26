@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { Autenticaveis } from "./auth.entity.js";
 
 import { AppDataSource } from "../data-source.js";
-import { decryptPassword } from "../utils/senhaUtils.js";
+import { decryptPassword } from "./cryptografiaSenha.js";
 import { AppError } from "../error/ErrorHandler.js";
 
 export const login = async (req: Request, res: Response): Promise<void> => {

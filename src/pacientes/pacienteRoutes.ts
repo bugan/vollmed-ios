@@ -1,6 +1,4 @@
 import { Router } from "express";
-import { verificaTokenJWT } from "../auth/verificaTokenJWT.js";
-
 import {
   lerPacientes,
   criarPaciente,
@@ -10,7 +8,6 @@ import {
   atualizarEnderecoPaciente,
   listaConsultasPaciente,
 } from "./pacienteController.js";
-import { Role } from "../auth/roles.js";
 
 export const pacienteRouter = Router();
 
@@ -18,17 +15,9 @@ pacienteRouter.get("/", lerPacientes);
 pacienteRouter.post("/", criarPaciente);
 pacienteRouter.get("/:id", lerPaciente);
 pacienteRouter.get("/:id/consultas", listaConsultasPaciente);
-pacienteRouter.put("/:id", verificaTokenJWT(Role.paciente), atualizarPaciente);
-pacienteRouter.delete(
-  "/:id",
-  verificaTokenJWT(Role.paciente),
-  desativaPaciente
-);
-pacienteRouter.patch(
-  "/:id",
-  verificaTokenJWT(Role.paciente),
-  atualizarEnderecoPaciente
-);
+pacienteRouter.put("/:id", atualizarPaciente);
+pacienteRouter.delete("/:id", desativaPaciente);
+pacienteRouter.patch("/:id", atualizarEnderecoPaciente);
 export default (app) => {
   app.use("/paciente", pacienteRouter);
 };

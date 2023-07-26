@@ -1,7 +1,6 @@
 import { Role } from "./roles.js";
-import { type DataSource, ViewColumn, ViewEntity } from "typeorm";
+import { ViewColumn, ViewEntity } from "typeorm";
 import { type IAutenticavel } from "./IAutencavel.js";
-import { Paciente } from "../pacientes/paciente.entity.js";
 
 @ViewEntity({
   expression: `

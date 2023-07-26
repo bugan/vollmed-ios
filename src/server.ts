@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
@@ -50,7 +49,6 @@ rotaAuth(app);
 rotaEspecialidade(app);
 app.use(errorMiddleware);
 
-// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });

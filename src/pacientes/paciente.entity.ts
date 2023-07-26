@@ -6,11 +6,14 @@ import {
   JoinColumn,
   Relation,
   OneToMany,
+  BeforeInsert,
+  BeforeUpdate,
 } from "typeorm";
 import { Endereco } from "../enderecos/endereco.entity.js";
 import { Avaliacoes } from "../avaliacoes/avaliacoes.entity.js";
 import { type IAutenticavel } from "../auth/IAutencavel.js";
 import { Role } from "../auth/roles.js";
+import { encryptPassword } from "../auth/cryptografiaSenha.js";
 
 @Entity()
 export class Paciente implements IAutenticavel {
@@ -27,7 +30,7 @@ export class Paciente implements IAutenticavel {
   email: string;
 
   @Column("varchar", { length: 100, select: false })
-  senha: string; // Criptografia?
+  senha: string;
 
   @OneToOne(() => Endereco, {
     cascade: ["update"],
@@ -63,7 +66,7 @@ export class Paciente implements IAutenticavel {
     cpf,
     nome,
     email,
-    senha,
+    senha: string,
     telefone,
     planosSaude,
     estaAtivo,
@@ -80,5 +83,11 @@ export class Paciente implements IAutenticavel {
     this.imagem = imagem;
     this.historico = historico;
     this.role = Role.paciente;
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  criptografa() {
+    this.senha = encryptPassword(this.senha);
   }
 }

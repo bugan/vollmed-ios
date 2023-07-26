@@ -4,7 +4,10 @@ import { seedEspecialidades } from "./especialidades.seed.js";
 import { seedEspecialistas } from "./especialistas.seed.js";
 import { seedPacientes } from "./pacientes.seed.js";
 import { seedPlanoDeSaude } from "./planoDeSaude.seed.js";
+import * as dotenv from "dotenv";
+dotenv.config({ path: "../.env" });
 
+console.log(process.env.SECRET_KEY);
 AppDataSource.initialize()
   .then(async () => {
     console.log("App Data Source inicializado");

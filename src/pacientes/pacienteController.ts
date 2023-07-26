@@ -6,8 +6,6 @@ import { CPFValido } from "./validacaoCPF.js";
 import { mapeiaPlano } from "../utils/planoSaudeUtils.js";
 import { Consulta } from "../consultas/consulta.entity.js";
 import { AppError, Status } from "../error/ErrorHandler.js";
-import { encryptPassword } from "../utils/senhaUtils.js";
-
 export const criarPaciente = async (
   req: Request,
   res: Response
@@ -36,12 +34,11 @@ export const criarPaciente = async (
   }
 
   try {
-    const senhaCriptografada = encryptPassword(senha);
     const paciente = new Paciente(
       cpf,
       nome,
       email,
-      senhaCriptografada,
+      senha,
       telefone,
       planosSaude,
       estaAtivo,

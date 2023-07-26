@@ -4,7 +4,7 @@ import { Especialista } from "./Especialista.entity.js";
 import { mapeiaPlano } from "../utils/planoSaudeUtils.js";
 import { Endereco } from "../enderecos/endereco.entity.js";
 import { AppError } from "../error/ErrorHandler.js";
-import { encryptPassword } from "../utils/senhaUtils.js";
+import { encryptPassword } from "../auth/cryptografiaSenha.js";
 
 // Get All
 export const especialistas = async (
@@ -42,7 +42,6 @@ export const criarEspecialista = async (
     // transforma array de numbers em array de strings com os nomes dos planos definidos no enum correspondente
     planosSaude = mapeiaPlano(planosSaude);
   }
-  const senhaCriptografada = encryptPassword(senha);
   const especialista = new Especialista(
     nome,
     crm,
@@ -53,7 +52,7 @@ export const criarEspecialista = async (
     telefone,
     possuiPlanoSaude,
     planosSaude,
-    senhaCriptografada
+    senha
   );
 
   const enderecoPaciente = new Endereco();
@@ -145,6 +144,7 @@ export const atualizarEspecialista = async (
     especialistaUpdate.telefone = telefone;
     especialistaUpdate.possuiPlanoSaude = possuiPlanoSaude;
     especialistaUpdate.planosSaude = planosSaude;
+    especialistaUpdate.senha = senha;
 
     await AppDataSource.manager.save(Especialista, especialistaUpdate);
     res.json(especialistaUpdate);

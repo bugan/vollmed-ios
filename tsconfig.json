@@ -17,9 +17,9 @@
 		"strictNullChecks": true,
 	},
 	"include": [
-		"./src/**/*"
-, "seeds"	],
+		"./src/**/*"],
 	"exclude": [
 		"node_modules"
 	],
+	"ts-node": {"esm": true}
 }

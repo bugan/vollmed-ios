@@ -1,4 +1,6 @@
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   Entity,
   JoinColumn,
@@ -13,6 +15,7 @@ import { Clinica } from "../clinicas/clinica.entity.js";
 import { Endereco } from "../enderecos/endereco.entity.js";
 import { type IAutenticavel } from "../auth/IAutencavel.js";
 import { Role } from "../auth/roles.js";
+import { encryptPassword } from "../auth/cryptografiaSenha.js";
 
 @Entity()
 export class Especialista implements IAutenticavel {
@@ -89,5 +92,10 @@ export class Especialista implements IAutenticavel {
     this.planosSaude = planosSaude;
     this.senha = senha;
     this.role = Role.especialista;
+  }
+  @BeforeInsert()
+  @BeforeUpdate()
+  criptografa() {
+    this.senha = encryptPassword(this.senha);
   }
 }

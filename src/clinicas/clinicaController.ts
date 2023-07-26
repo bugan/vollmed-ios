@@ -4,7 +4,6 @@ import { Endereco } from "../enderecos/endereco.entity.js";
 import { Especialista } from "../especialistas/Especialista.entity.js";
 import { mapeiaPlano } from "../utils/planoSaudeUtils.js";
 import { Clinica } from "./clinica.entity.js";
-import { encryptPassword } from "../utils/senhaUtils.js";
 
 export const criarClinica = async (
   req: Request,
@@ -19,12 +18,9 @@ export const criarClinica = async (
     planoDeSaudeAceitos,
   } = req.body;
 
-  const senhaCriptografada = encryptPassword(senha);
-
-  const clinica = new Clinica();
+  const clinica = new Clinica(senha);
   clinica.nome = nome;
   clinica.email = email;
-  clinica.senha = senhaCriptografada;
   const enderecoClinica = new Endereco();
   enderecoClinica.cep = endereco.cep;
   enderecoClinica.rua = endereco.rua;
